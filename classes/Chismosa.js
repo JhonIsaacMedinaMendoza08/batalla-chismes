@@ -1,36 +1,42 @@
+
+// Clase abstracta base para todas las chismosas
 export class Chismosa {
-    #reputacion;
-    #nivelChisme;
-    constructor(nombre, reputacion, nivelChisme){
-        if(this.constructor === Chismosa) {
-            throw new Error("No se puede instanciar la clase Chismosa directamente");
-        }
-        this.nombre = nombre;
-        this.#reputacion = reputacion;
-        this.#nivelChisme = nivelChisme;
-    }
+  #reputacion;
+  #nivelChisme;
 
-    recolectarInformacion() {
-        throw new Error("Método recolectarInformacion() no implementado");
+  constructor(nombre, reputacion, nivelChisme) {
+    if (this.constructor === Chismosa) {
+      throw new Error("No se puede instanciar una clase abstracta.");
     }
+    this.nombre = nombre;
+    this.#reputacion = reputacion;
+    this.#nivelChisme = nivelChisme;
+  }
 
-    contarChisme(){
-        throw new Error("Método contarChisme() no implementado");
-    }
+  // Métodos que deben ser implementados por las subclases
+  recolectarInfo() {
+    throw new Error("Debe implementar el método recolectarInfo()");
+  }
 
-    getReputacion() {
-        return this.#reputacion;
-    }
+  contarChisme() {
+    throw new Error("Debe implementar el método contarChisme()");
+  }
 
-    getNivelChisme() {
-        return this.#nivelChisme;
-    }
+  // Métodos públicos para acceder a propiedades privadas
+  getReputacion() {
+    return this.#reputacion;
+  }
 
-    modificarReputacion(valor) {
-        this.#reputacion = Math.max(0, Math.min(10, this.#reputacion + valor));
-    }
+  getNivelChisme() {
+    return this.#nivelChisme;
+  }
 
-    modificarNivelChisme(valor) {
-        this.#nivelChisme = Math.max(0, Math.min(10, this.#nivelChisme + valor));
-    }
+  // Métodos para modificar reputación y nivel de chisme de forma segura
+  modificarReputacion(valor) {
+    this.#reputacion = Math.max(0, Math.min(10, this.#reputacion + valor));
+  }
+
+  modificarNivelChisme(valor) {
+    this.#nivelChisme = Math.max(0, Math.min(10, this.#nivelChisme + valor));
+  }
 }

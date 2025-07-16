@@ -1,5 +1,6 @@
 {
   "name": "batalla-chismes",
+  "type": "module",
   "version": "1.0.0",
   "description": "batalla de chismes",
   "main": "index.js",
